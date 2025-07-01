@@ -21,8 +21,10 @@
     <a href="file-upload.html" class="sidebar-link">Upload Materials</a>
     <a href="profile.html" class="sidebar-link">Profile</a>
     <a href="#" class="sidebar-link" id="open-chat-btn">Chat</a>
+    <a href="manage-users.html" class="sidebar-link">Manage Users</a>
   </div>
   <div class="main-content">
+    <!-- Manage Users Modal -->
     <h2>Admin Dashboard</h2>
     <div style="display:flex;gap:24px;flex-wrap:wrap;">
       <div class="card" style="flex:1;min-width:200px;">
@@ -72,6 +74,37 @@
     </div>
   </div>
   <script src="../js/sidebar.js"></script>
+  <script>
+    // Manage Users Modal functionality
+    const manageUsersModal = document.getElementById('manage-users-modal');
+    const openManageUsersBtn = document.getElementById('open-manage-users-btn');
+    const closeManageUsersBtn = document.getElementById('close-manage-users-btn');
+    if(openManageUsersBtn && manageUsersModal) {
+      openManageUsersBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        manageUsersModal.style.display = 'flex';
+      });
+    }
+    if(closeManageUsersBtn && manageUsersModal) {
+      closeManageUsersBtn.addEventListener('click', function() {
+        manageUsersModal.style.display = 'none';
+      });
+    }
+    // Toggle user status (block/unblock)
+    window.toggleUserStatus = function(btn) {
+      const row = btn.closest('tr');
+      const statusCell = row.querySelector('td:nth-child(3) span');
+      if(statusCell.textContent === 'Active') {
+        statusCell.textContent = 'Blocked';
+        statusCell.style.color = 'red';
+        btn.textContent = 'Unblock';
+      } else {
+        statusCell.textContent = 'Active';
+        statusCell.style.color = 'green';
+        btn.textContent = 'Block';
+      }
+    }
+  </script>
   <script>
     // WhatsApp-like chat modal functionality (front-end only, not persistent)
     const chatModal = document.getElementById('chat-modal');

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Users - Admin</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .manage-users-table th, .manage-users-table td {
+      padding: 8px 10px;
+      text-align: left;
+    }
+    .manage-users-table th {
+      background: #fbc02d;
+      color: #1a237e;
+    }
+    .manage-users-table tr:nth-child(even) {
+      background: #f5f5f5;
+    }
+    .manage-users-table tr:nth-child(odd) {
+      background: #fff;
+    }
+    .manage-users-table button {
+      padding: 2px 10px;
+      border-radius: 5px;
+      border: none;
+      background: #3949ab;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .manage-users-table button:hover {
+      background: #fbc02d;
+      color: #1a237e;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
+    <div>
+      <button class="profile-btn" onclick="location.href='profile.html'">Profile</button>
+      <button class="logout-btn" onclick="logoutRedirect()">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="course-management.html" class="sidebar-link">Manage Courses</a>
+    <a href="file-upload.html" class="sidebar-link">Upload Materials</a>
+    <a href="profile.html" class="sidebar-link">Profile</a>
+    <a href="#" class="sidebar-link" id="open-chat-btn">Chat</a>
+    <a href="#" class="sidebar-link active">Manage Users</a>
+  </div>
+  <div class="main-content">
+    <h2>Manage Users</h2>
+    <div class="card" style="margin-top:18px;">
+      <h4 style="color:#1a237e;margin-bottom:10px;">All Users</h4>
+      <div style="margin-bottom:12px;">
+        <label for="user-filter" style="font-weight:600;margin-right:8px;">Filter by Role:</label>
+        <select id="user-filter" style="padding:5px 10px;border-radius:5px;border:1px solid #ccc;">
+          <option value="all">All</option>
+          <option value="Student">Students</option>
+          <option value="Lecturer">Lecturers</option>
+          <option value="Admin">Admins</option>
+        </select>
+      </div>
+      <table class="manage-users-table" style="width:100%;border-collapse:collapse;font-size:15px;">
+        <thead>
+          <tr>
+            <th>Name</th><th>Role</th><th>Status</th><th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="users-table-body">
+          <tr data-role="Student"><td>Jane Doe</td><td>Student</td><td><span style='color:green;'>Active</span></td><td><button onclick="toggleUserStatus(this)">Block</button></td></tr>
+          <tr data-role="Student"><td>John Smith</td><td>Student</td><td><span style='color:green;'>Active</span></td><td><button onclick="toggleUserStatus(this)">Block</button></td></tr>
+          <tr data-role="Lecturer"><td>Dr. Alice Johnson</td><td>Lecturer</td><td><span style='color:green;'>Active</span></td><td><button onclick="toggleUserStatus(this)">Block</button></td></tr>
+          <tr data-role="Lecturer"><td>Prof. Linda Smith</td><td>Lecturer</td><td><span style='color:green;'>Active</span></td><td><button onclick="toggleUserStatus(this)">Block</button></td></tr>
+          <tr data-role="Admin"><td>Admin User</td><td>Admin</td><td><span style='color:green;'>Active</span></td><td><button onclick="toggleUserStatus(this)">Block</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    // User filter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      var filter = document.getElementById('user-filter');
+      var rows = document.querySelectorAll('#users-table-body tr');
+      filter.addEventListener('change', function() {
+        var val = filter.value;
+        rows.forEach(function(row) {
+          if(val === 'all' || row.getAttribute('data-role') === val) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    function logoutRedirect() {
+      window.location.href = '../role-selection.html';
+    }
+    // Toggle user status (block/unblock)
+    window.toggleUserStatus = function(btn) {
+      const row = btn.closest('tr');
+      const statusCell = row.querySelector('td:nth-child(3) span');
+      if(statusCell.textContent === 'Active') {
+        statusCell.textContent = 'Blocked';
+        statusCell.style.color = 'red';
+        btn.textContent = 'Unblock';
+      } else {
+        statusCell.textContent = 'Active';
+        statusCell.style.color = 'green';
+        btn.textContent = 'Block';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-learning Platform</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
+    <div>
+      <button class="profile-btn">Profile</button>
+      <button class="logout-btn" onclick="logoutRedirect()">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="#" class="sidebar-link active">Student Dashboard</a>
+    <a href="student/materials.html" class="sidebar-link">Materials</a>
+    <a href="student/assignments.html" class="sidebar-link">Assignments</a>
+    <a href="#" class="sidebar-link">Profile</a>
+    <a href="role-selection.html" class="sidebar-link" style="color:#fbc02d;">Switch Role</a>
+  </div>
+  <div class="main-content">
+    <h1>Welcome, Student!</h1>
+    <section style="margin-bottom:24px;">
+      <p style="color:#444;font-size:16px;line-height:1.6;">
+        This is your student portal. Here you can access your learning materials, submit assignments, and manage your profile. Use the sidebar to navigate between sections.
+      </p>
+    </section>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <div style="background:#fff;padding:20px 28px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:220px;flex:1;">
+        <h3 style="color:#1a237e;">Materials</h3>
+        <p style="color:#555;">Browse and download course materials provided by your lecturers.</p>
+        <a href="student/materials.html" class="btn-primary" style="margin-top:10px;display:inline-block;">Go to Materials</a>
+      </div>
+      <div style="background:#fff;padding:20px 28px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:220px;flex:1;">
+        <h3 style="color:#1a237e;">Assignments</h3>
+        <p style="color:#555;">View, upload, and track your assignment submissions.</p>
+        <a href="student/assignments.html" class="btn-primary" style="margin-top:10px;display:inline-block;">Go to Assignments</a>
+      </div>
+      <div style="background:#fff;padding:20px 28px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:220px;flex:1;">
+        <h3 style="color:#1a237e;">Profile</h3>
+        <p style="color:#555;">Update your personal information and view your progress.</p>
+        <a href="#" class="btn-primary" style="margin-top:10px;display:inline-block;">Go to Profile</a>
+      </div>
+    </div>
+  </div>
+  <script src="js/sidebar.js"></script>
+  <script>
+    function logoutRedirect() {
+      window.location.href = 'role-selection.html';
+    }
+  </script>
+</body>
+</html>

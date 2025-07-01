@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f4f6fc;
+}
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  padding: 0 24px;
+}
+.topbar .profile-btn, .topbar .logout-btn {
+  background: #3949ab;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 220px;
+  height: calc(100% - 60px);
+  background: #1a237e;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s;
+  z-index: 99;
+}
+.sidebar.collapsed {
+  width: 60px;
+}
+.sidebar .sidebar-link {
+  padding: 16px 24px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s;
+}
+.sidebar .sidebar-link.active, .sidebar .sidebar-link:hover {
+  background: #fbc02d;
+  color: #1a237e;
+}
+.main-content {
+  margin-left: 220px;
+  margin-top: 60px;
+  padding: 32px 24px;
+  min-height: calc(100vh - 60px);
+  transition: margin-left 0.3s;
+}
+.sidebar.collapsed ~ .main-content {
+  margin-left: 60px;
+}
+.btn-primary {
+  background: #3949ab;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-accent {
+  background: #fbc02d;
+  color: #1a237e;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    left: -220px;
+    width: 220px;
+    transition: left 0.3s;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .topbar {
+    flex-direction: column;
+    height: auto;
+    padding: 8px;
+  }
+  .main-content {
+    padding: 16px 4px;
+  }
+}

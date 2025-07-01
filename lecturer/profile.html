@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - HUIB Lecturer</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { background: #f5f5f5; font-family: 'Poppins', sans-serif; margin: 0; }
+    .topbar { background: #1a237e; color: #fff; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .sidebar { background: #fff; min-width: 200px; height: 100vh; position: fixed; top: 0; left: 0; box-shadow: 2px 0 8px rgba(0,0,0,0.04); padding-top: 80px; }
+    .sidebar-link { display: block; padding: 16px 24px; color: #1a237e; text-decoration: none; font-weight: 600; border-left: 4px solid transparent; transition: background 0.2s, border-color 0.2s; }
+    .sidebar-link.active, .sidebar-link:hover { background: #fbc02d22; border-left: 4px solid #fbc02d; }
+    .main-content { margin-left: 220px; padding: 40px 24px; }
+    .profile-card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 32px; max-width: 600px; margin: 0 auto; }
+    .profile-header { display: flex; align-items: center; gap: 24px; margin-bottom: 24px; }
+    .profile-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid #fbc02d; }
+    .profile-info h2 { margin: 0 0 8px 0; color: #1a237e; }
+    .profile-info p { margin: 0; color: #555; }
+    .profile-section { margin-bottom: 32px; }
+    .profile-section h3 { color: #3949ab; margin-bottom: 10px; }
+    .profile-details-table { width: 100%; border-collapse: collapse; }
+    .profile-details-table td { padding: 8px 0; color: #333; }
+    .profile-details-table td:first-child { font-weight: 600; width: 140px; color: #1a237e; }
+    .edit-btn { background: #fbc02d; color: #1a237e; border: none; border-radius: 5px; padding: 8px 18px; font-weight: 600; cursor: pointer; margin-top: 12px; }
+    .edit-btn:hover { background: #ffd54f; }
+    @media (max-width: 800px) { .main-content { margin-left: 0; padding: 24px 6vw; } .sidebar { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div style="font-size:1.5rem;font-weight:700;">HUIB Lecturer</div>
+    <div>
+      <button class="profile-btn" style="margin-right:12px;">Profile</button>
+      <button class="logout-btn" onclick="window.location.href='../role-selection.html'">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="materials.html" class="sidebar-link">Materials</a>
+    <a href="assignments.html" class="sidebar-link">Assignments</a>
+    <a href="#" class="sidebar-link active">Profile</a>
+    <a href="../role-selection.html" class="sidebar-link" style="color:#fbc02d;">Switch Role</a>
+  </div>
+  <div class="main-content">
+    <div class="profile-card">
+      <div class="profile-header">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Profile Photo" class="profile-avatar">
+        <div class="profile-info">
+          <h2>Prof. Lee</h2>
+          <p>Lecturer | Physics Department</p>
+        </div>
+      </div>
+      <div class="profile-section">
+        <h3>Personal Details</h3>
+        <table class="profile-details-table">
+          <tr><td>Full Name:</td><td>Prof. Lee</td></tr>
+          <tr><td>Email:</td><td>lee@huib.edu</td></tr>
+          <tr><td>Phone:</td><td>+1 555 123 456</td></tr>
+          <tr><td>Department:</td><td>Physics</td></tr>
+          <tr><td>Staff ID:</td><td>LEC2025001</td></tr>
+        </table>
+        <button class="edit-btn">Edit Profile</button>
+      </div>
+      <div class="profile-section">
+        <h3>Academic Summary</h3>
+        <table class="profile-details-table">
+          <tr><td>Courses Taught:</td><td>3</td></tr>
+          <tr><td>Materials Uploaded:</td><td>8</td></tr>
+          <tr><td>Assignments Graded:</td><td>20</td></tr>
+        </table>
+      </div>
+      <div class="profile-section">
+        <h3>Recent Activities</h3>
+        <ul style="color:#555;font-size:15px;line-height:1.7;margin:0 0 0 18px;">
+          <li>Uploaded new material for "Physics 201"</li>
+          <li>Graded assignment for "Math 101"</li>
+          <li>Updated profile information</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

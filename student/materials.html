@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Materials</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
+    <div>
+      <button class="profile-btn">Profile</button>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="#" class="sidebar-link active">Courses</a>
+    <a href="assignments.html" class="sidebar-link">Assignments</a>
+    <a href="profile.html" class="sidebar-link">Profile</a>
+  </div>
+  <div class="main-content">
+    <h2>Course Materials</h2>
+    <div class="card">
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <div class="card" style="flex:1;min-width:200px;">
+          <h4>Lecture 1: Introduction</h4>
+          <button class="btn-accent" onclick="downloadFile('lecture1.pdf')">Download</button>
+          <iframe src="../uploads/lecture1.pdf" width="100%" height="200"></iframe>
+        </div>
+        <div class="card" style="flex:1;min-width:200px;">
+          <h4>Lecture 2: Video</h4>
+          <button class="btn-accent" onclick="downloadFile('lecture2.mp4')">Download</button>
+          <video width="100%" height="200" controls>
+            <source src="../uploads/lecture2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    function downloadFile(filename) {
+      window.location.href = '../uploads/' + filename;
+    }
+  </script>
+</body>
+</html>

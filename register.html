@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .register-container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 32px; }
+    .input-group { margin-bottom: 18px; }
+    .input-group label { display: block; margin-bottom: 6px; color: #3949ab; font-weight: 600; }
+    .input-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    .error-msg { color: #d32f2f; margin-bottom: 12px; }
+    .success-msg { color: #388e3c; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <form action="register.php" method="post" onsubmit="return validateForm()">
+      <h2>Student Registration</h2>
+      <div class="error-msg" id="errorMsg"></div>
+      <div class="success-msg" id="successMsg"></div>
+      <div class="input-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" name="fullname" id="fullname" required>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+      <div class="input-group">
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" id="phone" required>
+      </div>
+      <div class="input-group">
+        <label for="department">Department</label>
+        <input type="text" name="department" id="department" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+      <div class="input-group">
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" name="confirm_password" id="confirm_password" required>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;">Register</button>
+    </form>
+  </div>
+  <script>
+    function validateForm() {
+      var pwd = document.getElementById('password').value;
+      var cpwd = document.getElementById('confirm_password').value;
+      if (pwd !== cpwd) {
+        document.getElementById('errorMsg').textContent = 'Passwords do not match!';
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

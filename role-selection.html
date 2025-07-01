@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - Choose Role</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      background: #1a237e;
+      color: #fff;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    main {
+      margin-top: 80px;
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      background: #f5f5f5;
+    }
+    .role-btn {
+      display: block;
+      width: 220px;
+      margin: 16px auto;
+      padding: 14px 0;
+      font-size: 18px;
+      border: none;
+      border-radius: 6px;
+      background: #fbc02d;
+      color: #1a237e;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .role-btn:hover { background: #ffd54f; }
+    nav ul { list-style: none; display: flex; gap: 32px; margin: 0; padding: 0; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 600; }
+    nav ul li a:hover { text-decoration: underline; }
+    section { width: 100%; box-sizing: border-box; }
+    #hero { background: linear-gradient(90deg,#fbc02d 60%,#fff 100%); padding: 100px 0 48px 0; text-align: center; }
+    #about, #contact { background: #fff; padding: 56px 0; text-align: center; }
+    #photos { background: #f5f5f5; padding: 56px 0; text-align: center; }
+    #photos img { width: 220px; height: 150px; object-fit: cover; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    footer { background: #1a237e; color: #fff; text-align: center; padding: 24px 0; margin-top: 0; }
+    @media (max-width: 700px) {
+      nav { flex-direction: column; gap: 12px; }
+      nav ul { gap: 16px; }
+      #hero h1 { font-size: 2rem; }
+      #about h2, #photos h2, #contact h2 { font-size: 1.3rem; }
+      #photos img { width: 100px; height: 70px; }
+    }
+  </style>
+</head>
+  <body>
+    <header>
+      <nav style="display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:18px 32px;">
+        <div style="font-size:2rem;font-weight:700;letter-spacing:1px;">HUIB</div>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#photos">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+    <section id="hero">
+      <h1 style="font-size:2.8rem;color:#1a237e;margin-bottom:18px;font-weight:700;">Welcome to HUIB Portal</h1>
+      <p style="font-size:1.3rem;color:#333;max-width:600px;margin:0 auto 24px auto;">Empowering students, lecturers, and administrators with modern e-learning tools and a collaborative academic environment.</p>
+      <div style="margin:32px 0 0 0;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;">
+        <button class="role-btn" onclick="location.href='admin/dashboard.html'">Admin</button>
+        <button class="role-btn" onclick="location.href='student/dashboard.html'">Student</button>
+        <button class="role-btn" onclick="location.href='login.html'">Lecturer</button>
+      </div>
+    </section>
+    <section id="about" style="background:#fff;padding:56px 0;text-align:center;">
+      <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">About HUIB</h2>
+      <p style="color:#444;font-size:1.1rem;max-width:700px;margin:0 auto 18px auto;">HUIB is dedicated to providing quality education and fostering a collaborative environment for students, lecturers, and administrators. Our platform enables seamless course management, access to learning materials, and active participation in academic activities.</p>
+      <ul style="display:inline-block;text-align:left;max-width:400px;margin:18px auto 0 auto;color:#333;font-size:15px;line-height:1.8;">
+        <li><b>Over 50+ courses</b> across various disciplines</li>
+        <li><b>Experienced lecturers</b> and dedicated support staff</li>
+        <li><b>Modern e-learning resources</b> and assignment management</li>
+        <li><b>Secure and user-friendly system</b> for all actors</li>
+      </ul>
+    </section>
+    <section id="photos" style="background:#f5f5f5;padding:56px 0;text-align:center;">
+      <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">Gallery</h2>
+      <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;max-width:900px;margin:0 auto;">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Campus 1" style="width:220px;height:150px;object-fit:cover;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=400&q=80" alt="Campus 2" style="width:220px;height:150px;object-fit:cover;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=400&q=80" alt="Classroom" style="width:220px;height:150px;object-fit:cover;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+      </div>
+    </section>
+    <section id="contact" style="background:#fff;padding:56px 0;text-align:center;">
+      <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">Contact Us</h2>
+      <p style="color:#444;font-size:1.1rem;max-width:600px;margin:0 auto 24px auto;">Have questions or need support? Reach out to our team and we’ll be happy to assist you.</p>
+      <form style="max-width:400px;margin:0 auto;text-align:left;">
+        <label for="name" style="font-weight:600;">Name</label>
+        <input id="name" type="text" required style="width:100%;margin-bottom:10px;padding:8px 10px;border-radius:5px;border:1px solid #ccc;">
+        <label for="email" style="font-weight:600;">Email</label>
+        <input id="email" type="email" required style="width:100%;margin-bottom:10px;padding:8px 10px;border-radius:5px;border:1px solid #ccc;">
+        <label for="message" style="font-weight:600;">Message</label>
+        <textarea id="message" required style="width:100%;margin-bottom:10px;padding:8px 10px;border-radius:5px;border:1px solid #ccc;min-height:80px;"></textarea>
+        <button type="submit" class="role-btn" style="width:100%;margin:0;">Send Message</button>
+      </form>
+    </section>
+    <footer style="background:#1a237e;color:#fff;padding:40px 0 0 0;margin-top:0;">
+      <div style="max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px;padding:0 24px 32px 24px;">
+        <div style="flex:1;min-width:200px;">
+          <h3 style="color:#fbc02d;margin-bottom:12px;">About HUIB</h3>
+          <p style="color:#eee;font-size:15px;line-height:1.7;">HUIB is committed to academic excellence, innovation, and a supportive learning environment for all students and staff. We offer a wide range of programs and modern facilities to help you achieve your goals.</p>
+        </div>
+        <div style="flex:1;min-width:180px;">
+          <h3 style="color:#fbc02d;margin-bottom:12px;">Quick Links</h3>
+          <ul style="list-style:none;padding:0;margin:0;line-height:2;">
+            <li><a href="#hero" style="color:#fff;text-decoration:none;">Home</a></li>
+            <li><a href="#about" style="color:#fff;text-decoration:none;">About</a></li>
+            <li><a href="#photos" style="color:#fff;text-decoration:none;">Gallery</a></li>
+            <li><a href="#contact" style="color:#fff;text-decoration:none;">Contact</a></li>
+          </ul>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <h3 style="color:#fbc02d;margin-bottom:12px;">Contact Info</h3>
+          <ul style="list-style:none;padding:0;margin:0;line-height:2;">
+            <li><span style="color:#fff;">Email:</span> <a href="mailto:info@huib.edu" style="color:#fff;text-decoration:underline;">info@huib.edu</a></li>
+            <li><span style="color:#fff;">Phone:</span> <a href="tel:+1234567890" style="color:#fff;text-decoration:underline;">+1 234 567 890</a></li>
+            <li><span style="color:#fff;">Address:</span> 123 HUIB Avenue, City, Country</li>
+          </ul>
+        </div>
+        <div style="flex:1;min-width:180px;">
+          <h3 style="color:#fbc02d;margin-bottom:12px;">Follow Us</h3>
+          <div style="display:flex;gap:16px;align-items:center;">
+            <a href="#" style="color:#fff;font-size:22px;text-decoration:none;" title="Facebook"><span style="font-size:22px;">&#x1F426;</span></a>
+            <a href="#" style="color:#fff;font-size:22px;text-decoration:none;" title="Twitter"><span style="font-size:22px;">&#x1F426;</span></a>
+            <a href="#" style="color:#fff;font-size:22px;text-decoration:none;" title="Instagram"><span style="font-size:22px;">&#x1F33A;</span></a>
+            <a href="#" style="color:#fff;font-size:22px;text-decoration:none;" title="LinkedIn"><span style="font-size:22px;">&#x1F4BB;</span></a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #3949ab;margin-top:24px;padding:18px 0 0 0;text-align:center;font-size:15px;color:#bbb;">&copy; 2025 HUIB. All rights reserved. | Designed by the HUIB Web Team</div>
+    </footer>
+</body>
+</html>

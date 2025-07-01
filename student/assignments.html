@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment Upload</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
+    <div>
+      <button class="profile-btn">Profile</button>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="materials.html" class="sidebar-link">Courses</a>
+    <a href="#" class="sidebar-link active">Assignments</a>
+    <a href="profile.html" class="sidebar-link">Profile</a>
+  </div>
+  <div class="main-content">
+    <h2>Submit Assignment</h2>
+    <div class="card">
+      <form action="upload-assignment.php" method="post" enctype="multipart/form-data">
+        <select name="course_id" required style="width:100%;margin-bottom:8px;">
+          <option value="">Select Course</option>
+          <option value="1">Math 101</option>
+          <option value="2">Physics 201</option>
+        </select>
+        <input type="text" name="assignment_title" placeholder="Assignment Title" required style="width:100%;margin-bottom:8px;">
+        <input type="file" name="assignment_file" accept=".pdf,.docx,.zip" required style="margin-bottom:8px;">
+        <button type="submit" class="btn-primary">Submit</button>
+      </form>
+      <div id="uploadStatus"></div>
+    </div>
+  </div>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    document.querySelector('input[type=file]').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        document.getElementById('uploadStatus').textContent = 'Selected: ' + file.name;
+      }
+    });
+  </script>
+</body>
+</html>

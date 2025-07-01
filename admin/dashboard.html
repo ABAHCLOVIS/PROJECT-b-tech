@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
+    <div>
+      <button class="profile-btn">Profile</button>
+      <button class="logout-btn" onclick="logoutRedirect()">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="#" class="sidebar-link active">Dashboard</a>
+    <a href="course-management.html" class="sidebar-link">Manage Courses</a>
+    <a href="file-upload.html" class="sidebar-link">Upload Materials</a>
+    <a href="profile.html" class="sidebar-link">Profile</a>
+  </div>
+  <div class="main-content">
+    <h2>Admin Dashboard</h2>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <div class="card" style="flex:1;min-width:200px;">
+        <h3>Total Students</h3>
+        <p id="total-students">120</p>
+      </div>
+      <div class="card" style="flex:1;min-width:200px;">
+        <h3>Total Courses</h3>
+        <p id="total-courses">15</p>
+      </div>
+      <div class="card" style="flex:1;min-width:200px;">
+        <h3>Uploaded Materials</h3>
+        <p id="total-materials">45</p>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Enrollment Stats</h3>
+      <canvas id="enrollmentChart" width="400" height="120"></canvas>
+    </div>
+    <div class="card">
+      <h3>Recent Student Registrations</h3>
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:#fbc02d;color:#1a237e;">
+            <th>Name</th><th>Email</th><th>Department</th><th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Jane Doe</td><td>jane@example.com</td><td>CS</td><td>2025-06-30</td></tr>
+          <tr><td>John Smith</td><td>john@example.com</td><td>Math</td><td>2025-06-29</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    function logoutRedirect() {
+      window.location.href = '../role-selection.html';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Chart.js example
+    const ctx = document.getElementById('enrollmentChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Enrollments',
+          data: [12, 19, 8, 15, 10, 17],
+          backgroundColor: '#3949ab'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: 2.5,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Management</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
+    <div>
+      <button class="profile-btn">Profile</button>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="dashboard.html" class="sidebar-link">Dashboard</a>
+    <a href="#" class="sidebar-link active">Manage Courses</a>
+    <a href="file-upload.html" class="sidebar-link">Upload Materials</a>
+    <a href="profile.html" class="sidebar-link">Profile</a>
+  </div>
+  <div class="main-content">
+    <h2>Course Management</h2>
+    <a href="../role-selection.html" style="color:#1a237e;text-decoration:underline;font-size:15px;">&larr; Back to Role Selection</a>
+    <div class="card" style="margin-top:18px;">
+      <h3>Add New Course</h3>
+      <p style="color:#555;font-size:15px;margin-bottom:10px;">Fill in the details below to add a new course to the system. All fields are required.</p>
+      <form id="addCourseForm">
+        <label for="courseTitle" style="font-weight:600;">Course Title</label>
+        <input id="courseTitle" type="text" name="title" placeholder="e.g. Math 101" required style="width:100%;margin-bottom:8px;">
+        <label for="courseDesc" style="font-weight:600;">Description</label>
+        <input id="courseDesc" type="text" name="description" placeholder="e.g. Intro to Math" required style="width:100%;margin-bottom:8px;">
+        <label for="lecturer" style="font-weight:600;">Lecturer</label>
+        <select id="lecturer" name="lecturer" required style="width:100%;margin-bottom:8px;">
+          <option value="">Select Lecturer</option>
+          <option value="Dr. Smith">Dr. Smith</option>
+          <option value="Prof. Lee">Prof. Lee</option>
+        </select>
+        <button type="submit" class="btn-primary">Add Course</button>
+      </form>
+    </div>
+    <div class="card" style="margin-top:24px;">
+      <h3>All Courses</h3>
+      <p style="color:#555;font-size:15px;margin-bottom:10px;">Below is a list of all courses currently available. You can edit, delete, or view materials for each course.</p>
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:#fbc02d;color:#1a237e;">
+            <th>Title</th>
+            <th>Description</th>
+            <th>Lecturer</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Math 101</td>
+            <td>Intro to Math</td>
+            <td>Dr. Smith</td>
+            <td>
+              <button class="btn-accent" onclick="openEditModal()">Edit</button>
+              <button class="btn-primary" onclick="confirm('Delete this course?')">Delete</button>
+              <a href="file-upload.html" class="btn-primary">View Materials</a>
+            </td>
+          </tr>
+          <!-- More courses will appear here dynamically -->
+        </tbody>
+      </table>
+    </div>
+    <div id="editModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);align-items:center;justify-content:center;z-index:1000;">
+      <div style="background:#fff;padding:24px;border-radius:8px;min-width:320px;max-width:90vw;">
+        <h3>Edit Course</h3>
+        <p style="color:#555;font-size:15px;margin-bottom:10px;">Update the course details below and click Save to apply changes.</p>
+        <form>
+          <label for="editTitle" style="font-weight:600;">Course Title</label>
+          <input id="editTitle" type="text" value="Math 101" style="width:100%;margin-bottom:8px;">
+          <label for="editDesc" style="font-weight:600;">Description</label>
+          <input id="editDesc" type="text" value="Intro to Math" style="width:100%;margin-bottom:8px;">
+          <label for="editLecturer" style="font-weight:600;">Lecturer</label>
+          <select id="editLecturer" style="width:100%;margin-bottom:8px;">
+            <option>Dr. Smith</option>
+            <option>Prof. Lee</option>
+          </select>
+          <button type="submit" class="btn-primary">Save</button>
+          <button type="button" onclick="closeEditModal()" class="btn-accent">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    function openEditModal() {
+      document.getElementById('editModal').style.display = 'flex';
+    }
+    function closeEditModal() {
+      document.getElementById('editModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

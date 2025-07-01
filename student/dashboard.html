@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+    .dashboard-card-link {
+      transition: transform 0.22s, box-shadow 0.22s;
+      cursor: pointer;
+      outline: none;
+    }
+    .dashboard-card-link:hover, .dashboard-card-link:focus {
+      transform: translateY(-7px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(60,60,120,0.18);
+      background: #fbc02d22;
+    }
+  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Student Dashboard</title>
@@ -24,15 +36,15 @@
   <div class="main-content">
     <h2>Welcome, Student!</h2>
     <div style="display:flex;gap:24px;flex-wrap:wrap;">
-      <div class="card" style="flex:1;min-width:200px;">
+      <div class="card dashboard-card-link" tabindex="0" onclick="location.href='materials.html'" onkeydown="if(event.key==='Enter'){location.href='materials.html'}" style="flex:1;min-width:200px;">
         <h3>Enrolled Courses</h3>
         <p>3</p>
       </div>
-      <div class="card" style="flex:1;min-width:200px;">
+      <div class="card dashboard-card-link" tabindex="0" onclick="location.href='assignments.html'" onkeydown="if(event.key==='Enter'){location.href='assignments.html'}" style="flex:1;min-width:200px;">
         <h3>Submitted Assignments</h3>
         <p>5</p>
       </div>
-      <div class="card" style="flex:1;min-width:200px;">
+      <div class="card dashboard-card-link" tabindex="0" onclick="location.href='profile.html'" onkeydown="if(event.key==='Enter'){location.href='profile.html'}" style="flex:1;min-width:200px;">
         <h3>Current Time</h3>
         <p id="clock"></p>
       </div>

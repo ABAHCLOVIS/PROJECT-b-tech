@@ -20,6 +20,7 @@
     <a href="course-management.html" class="sidebar-link">Manage Courses</a>
     <a href="file-upload.html" class="sidebar-link">Upload Materials</a>
     <a href="profile.html" class="sidebar-link">Profile</a>
+    <a href="#" class="sidebar-link" id="open-chat-btn">Chat</a>
   </div>
   <div class="main-content">
     <h2>Admin Dashboard</h2>
@@ -36,6 +37,20 @@
         <h3>Uploaded Materials</h3>
         <p id="total-materials">45</p>
       </div>
+    </div>
+
+    <!-- WhatsApp-like Chat Modal -->
+    <div id="chat-modal" style="display:none;position:fixed;right:0;bottom:0;width:350px;max-width:95vw;height:480px;z-index:2000;background:#fff;box-shadow:-2px 0 16px rgba(0,0,0,0.18);border-radius:16px 0 0 0;flex-direction:column;overflow:hidden;">
+      <div style="background:#075e54;color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-weight:600;font-size:1.1rem;">HUIB Chat</span>
+        <button id="close-chat-btn" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;">&times;</button>
+      </div>
+      <div id="chat-box" style="flex:1;height:340px;overflow-y:auto;background:#ece5dd;padding:14px 10px 14px 10px;font-size:15px;display:flex;flex-direction:column;gap:8px;"></div>
+      <form id="chat-form" style="display:flex;gap:6px;padding:10px;background:#f7f7f7;border-top:1px solid #ddd;">
+        <input id="chat-user" type="text" placeholder="Your name" required style="flex:1;min-width:80px;padding:7px 10px;border-radius:5px;border:1px solid #ccc;">
+        <input id="chat-msg" type="text" placeholder="Type a message..." required style="flex:2;min-width:120px;padding:7px 10px;border-radius:5px;border:1px solid #ccc;">
+        <button type="submit" style="background:#25d366;color:#fff;border:none;padding:7px 16px;border-radius:5px;font-weight:600;">Send</button>
+      </form>
     </div>
     <div class="card">
       <h3>Enrollment Stats</h3>
@@ -57,6 +72,47 @@
     </div>
   </div>
   <script src="../js/sidebar.js"></script>
+  <script>
+    // WhatsApp-like chat modal functionality (front-end only, not persistent)
+    const chatModal = document.getElementById('chat-modal');
+    const openChatBtn = document.getElementById('open-chat-btn');
+    const closeChatBtn = document.getElementById('close-chat-btn');
+    const chatForm = document.getElementById('chat-form');
+    const chatBox = document.getElementById('chat-box');
+    if(openChatBtn && chatModal) {
+      openChatBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        chatModal.style.display = 'flex';
+      });
+    }
+    if(closeChatBtn && chatModal) {
+      closeChatBtn.addEventListener('click', function() {
+        chatModal.style.display = 'none';
+      });
+    }
+    if(chatForm && chatBox) {
+      chatForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = document.getElementById('chat-user').value.trim();
+        const msg = document.getElementById('chat-msg').value.trim();
+        if(user && msg) {
+          const entry = document.createElement('div');
+          entry.style.alignSelf = (user.toLowerCase().includes('lecturer')) ? 'flex-start' : 'flex-end';
+          entry.style.maxWidth = '80%';
+          entry.style.background = (user.toLowerCase().includes('lecturer')) ? '#fff' : '#dcf8c6';
+          entry.style.color = '#222';
+          entry.style.padding = '8px 12px';
+          entry.style.borderRadius = '12px';
+          entry.style.margin = '2px 0';
+          entry.style.boxShadow = '0 1px 4px rgba(0,0,0,0.06)';
+          entry.innerHTML = `<span style='font-size:13px;font-weight:600;color:#075e54;'>${user}</span><br>${msg}`;
+          chatBox.appendChild(entry);
+          chatBox.scrollTop = chatBox.scrollHeight;
+          chatForm.reset();
+        }
+      });
+    }
+  </script>
   <script>
     function logoutRedirect() {
       window.location.href = '../role-selection.html';

@@ -79,6 +79,16 @@
       #about h2, #photos h2, #contact h2 { font-size: 1.3rem; }
       #photos img { width: 100px; height: 70px; }
     }
+    /* What We Do hover effect */
+    #what-we-do .what-we-do-card {
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+    #what-we-do .what-we-do-card:hover, #what-we-do .what-we-do-card:focus {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 24px rgba(60,60,120,0.18);
+      background: #fbc02d22;
+    }
   </style>
 </head>
   <body>
@@ -104,6 +114,28 @@
       </div>
     </section>
     <section id="about" style="background:#fff;padding:56px 0;text-align:center;">
+    <section id="what-we-do" style="background:#f5f5f5;padding:56px 0;text-align:center;">
+      <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">What We Do</h2>
+      <p style="color:#444;font-size:1.1rem;max-width:700px;margin:0 auto 32px auto;">At HUIB, we are committed to empowering our academic community with a wide range of educational services and resources. Our offerings are designed to support students, lecturers, and administrators in achieving excellence and innovation in learning and teaching.</p>
+      <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;max-width:1000px;margin:0 auto;">
+        <div class="what-we-do-card" tabindex="0" style="background:#fff;padding:24px 18px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:220px;flex:1;max-width:300px;outline:none;">
+          <h3 style="color:#1a237e;margin-bottom:10px;">Comprehensive Courses</h3>
+          <p style="color:#555;font-size:15px;">We offer 50+ courses across diverse disciplines, ensuring every student finds their path to success.</p>
+        </div>
+        <div class="what-we-do-card" tabindex="0" style="background:#fff;padding:24px 18px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:220px;flex:1;max-width:300px;outline:none;">
+          <h3 style="color:#1a237e;margin-bottom:10px;">Modern E-Learning</h3>
+          <p style="color:#555;font-size:15px;">Our digital platform provides access to learning materials, assignments, and interactive resources anytime, anywhere.</p>
+        </div>
+        <div class="what-we-do-card" tabindex="0" style="background:#fff;padding:24px 18px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:220px;flex:1;max-width:300px;outline:none;">
+          <h3 style="color:#1a237e;margin-bottom:10px;">Expert Faculty</h3>
+          <p style="color:#555;font-size:15px;">Our experienced lecturers and staff are dedicated to guiding students and fostering a collaborative academic environment.</p>
+        </div>
+        <div class="what-we-do-card" tabindex="0" style="background:#fff;padding:24px 18px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.06);min-width:220px;flex:1;max-width:300px;outline:none;">
+          <h3 style="color:#1a237e;margin-bottom:10px;">Student Support</h3>
+          <p style="color:#555;font-size:15px;">We provide academic advising, technical support, and a vibrant community to help every learner thrive.</p>
+        </div>
+      </div>
+    </section>
       <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">About HUIB</h2>
       <p style="color:#444;font-size:1.1rem;max-width:700px;margin:0 auto 18px auto;">HUIB is dedicated to providing quality education and fostering a collaborative environment for students, lecturers, and administrators. Our platform enables seamless course management, access to learning materials, and active participation in academic activities.</p>
       <ul style="display:inline-block;text-align:left;max-width:400px;margin:18px auto 0 auto;color:#333;font-size:15px;line-height:1.8;">

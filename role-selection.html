@@ -111,6 +111,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#photos">Gallery</a></li>
           <li><a href="#events">Events</a></li>
+          <li><a href="#faqs">FAQs</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -123,6 +124,31 @@
         <button class="role-btn" onclick="location.href='admin/dashboard.html'">Admin</button>
         <button class="role-btn" onclick="location.href='student/dashboard.html'">Student</button>
         <button class="role-btn" onclick="location.href='login.html'">Lecturer</button>
+      </div>
+    </section>
+
+    <!-- Lecturer Dashboard Section (Home Page Preview) -->
+    <section id="lecturer-dashboard" style="background:#fff;padding:56px 0 32px 0;text-align:center;">
+      <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">Lecturer Dashboard (Preview)</h2>
+      <div style="max-width:1200px;margin:0 auto;padding:24px;background:#f8f9fa;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+        <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
+          <section style="flex:1 1 320px;background:#fff;border-radius:10px;padding:28px 24px;box-shadow:0 1px 6px rgba(0,0,0,0.04);min-width:320px;max-width:350px;display:flex;flex-direction:column;align-items:flex-start;margin-bottom:18px;">
+            <h3 style="font-size:1.3rem;margin-bottom:14px;color:#34495e;">Manage My Courses</h3>
+            <p style="color:#555;margin-bottom:18px;text-align:left;">Add, edit, and upload course content for your classes.</p>
+            <a href="lecturer/manage-courses.html" style="background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;margin-bottom:8px;" aria-label="Go to Manage My Courses">Go to Manage Courses</a>
+          </section>
+          <section style="flex:1 1 320px;background:#fff;border-radius:10px;padding:28px 24px;box-shadow:0 1px 6px rgba(0,0,0,0.04);min-width:320px;max-width:350px;display:flex;flex-direction:column;align-items:flex-start;margin-bottom:18px;">
+            <h3 style="font-size:1.3rem;margin-bottom:14px;color:#34495e;">Assignments & Grading</h3>
+            <p style="color:#555;margin-bottom:18px;text-align:left;">View student submissions, grade assignments, and provide feedback.</p>
+            <a href="lecturer/assignments.html" style="background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;margin-bottom:8px;" aria-label="Go to Assignments and Grading">Go to Assignments</a>
+          </section>
+          <section style="flex:1 1 320px;background:#fff;border-radius:10px;padding:28px 24px;box-shadow:0 1px 6px rgba(0,0,0,0.04);min-width:320px;max-width:350px;display:flex;flex-direction:column;align-items:flex-start;margin-bottom:18px;">
+            <h3 style="font-size:1.3rem;margin-bottom:14px;color:#34495e;">Course Forum</h3>
+            <p style="color:#555;margin-bottom:18px;text-align:left;">Discuss with students, answer questions, and facilitate course discussions.</p>
+            <a href="lecturer/forum.html" style="background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;margin-bottom:8px;" aria-label="Go to Course Forum">Go to Forum</a>
+          </section>
+        </div>
+        <div style="margin-top:18px;color:#888;font-size:0.98rem;">* Full dashboard available after lecturer login</div>
       </div>
     </section>
     <section id="about" style="background:#fff;padding:56px 0;text-align:center;">
@@ -209,6 +235,75 @@
         </div>
       </div>
     </section>
+    <section id="faqs" style="background:#fff;padding:56px 0;text-align:center;">
+      <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">Frequently Asked Questions</h2>
+      <p style="color:#444;font-size:1.1rem;max-width:700px;margin:0 auto 32px auto;">Find answers to common questions about HUIB, our portal, and academic life. Click a question to view the answer.</p>
+      <div id="faq-list" style="max-width:700px;margin:0 auto;text-align:left;">
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>How do I register as a student or lecturer?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">To register, click your role on the home page and follow the registration instructions. For students, use the Student button; for lecturers, use the Lecturer button. Admins have a separate access route.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>How do I enroll in a course?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">After logging in as a student, go to the Course Management section and select the courses you wish to enroll in. Follow the prompts to complete your enrollment.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>How do I upload assignments or materials?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">Students can upload assignments from their dashboard under the Assignments section. Lecturers can upload materials via the Upload Materials page in their dashboard.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>How do I contact my lecturer or classmates?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">You can use the chat feature in your dashboard to communicate with lecturers and classmates, or use the contact information provided in your course details.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>Can I access the portal on my mobile device?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">Yes, the HUIB portal is fully responsive and can be accessed on smartphones and tablets as well as desktop computers.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>How can I reset my password?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">On the login page, click "Forgot Password?" and follow the instructions to reset your password via your registered email address.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>Where can I find course materials and assignments?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">After logging in, navigate to your dashboard. Course materials and assignments are available under the respective sections for students and lecturers.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>Who do I contact for technical support?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">For technical support, use the Contact Us section at the bottom of this page or email <a href="mailto:info@huib.edu" style="color:#3949ab;text-decoration:underline;">info@huib.edu</a>.</div>
+        </div>
+        <div class="faq-item" tabindex="0" style="background:#f5f5f5;margin-bottom:14px;padding:18px 22px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);cursor:pointer;outline:none;">
+          <div class="faq-question" style="font-weight:600;color:#1a237e;font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;">
+            <span>Is my data secure on the HUIB portal?</span>
+            <span class="faq-toggle" aria-label="Expand answer" style="font-size:1.5rem;">+</span>
+          </div>
+          <div class="faq-answer" style="display:none;color:#333;margin-top:10px;font-size:1rem;">Yes, your data is protected with modern security measures and is only accessible to authorized users.</div>
+        </div>
+      </div>
+    </section>
     <section id="newsletter" style="background:#f5f5f5;padding:48px 0;text-align:center;">
       <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">Subscribe to Our Newsletter</h2>
       <p style="color:#444;font-size:1.1rem;max-width:600px;margin:0 auto 24px auto;">Stay updated with the latest news, events, and academic resources from HUIB. Enter your email below to subscribe. Accessible to all students, lecturers, and staff.</p>
@@ -231,8 +326,32 @@
         <button type="submit" class="role-btn" style="width:100%;margin:0;">Send Message</button>
   </form>
   <script>
-    // Newsletter form functionality
+    // FAQ accordion functionality
     document.addEventListener('DOMContentLoaded', function() {
+      // FAQ toggle
+      document.querySelectorAll('.faq-item').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          if(e.target.classList.contains('faq-toggle') || e.target.classList.contains('faq-question') || e.target.closest('.faq-question')) {
+            const answer = item.querySelector('.faq-answer');
+            const toggle = item.querySelector('.faq-toggle');
+            const expanded = answer.style.display === 'block';
+            // Collapse all
+            document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+            document.querySelectorAll('.faq-toggle').forEach(t => t.textContent = '+');
+            if(!expanded) {
+              answer.style.display = 'block';
+              toggle.textContent = '-';
+            }
+          }
+        });
+        item.addEventListener('keydown', function(e) {
+          if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            item.click();
+          }
+        });
+      });
+      // Newsletter form functionality
       var form = document.getElementById('newsletterForm');
       if(form) {
         form.addEventListener('submit', function(e) {

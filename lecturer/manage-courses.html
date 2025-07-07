@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecturer - Manage Courses</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    .manage-courses-container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(60,60,120,0.08); padding: 32px; }
+    .manage-courses-header { color: #1a237e; margin-bottom: 18px; font-size: 2rem; font-weight: 600; }
+    .course-list { margin-bottom: 32px; }
+    .course-item { background: #f5f5f5; border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 4px rgba(60,60,120,0.06); }
+    .course-title { font-weight: 600; color: #1a237e; font-size: 1.1rem; }
+    .course-actions button { margin-left: 8px; background: #fbc02d; color: #1a237e; border: none; border-radius: 5px; padding: 6px 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .course-actions button:hover { background: #ffd54f; }
+    .add-course-form { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+    .add-course-form input, .add-course-form textarea { padding: 8px 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; }
+    .add-course-form input { flex: 1; min-width: 180px; }
+    .add-course-form textarea { flex: 2; min-width: 220px; resize: vertical; }
+    .add-course-form button { background: #3949ab; color: #fff; border: none; border-radius: 5px; padding: 8px 22px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+    .add-course-form button:hover { background: #5c6bc0; }
+    .edit-modal { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(30,40,80,0.18); z-index: 3000; align-items: center; justify-content: center; }
+    .edit-modal-content { background: #fff; border-radius: 12px; padding: 32px; min-width: 320px; max-width: 90vw; box-shadow: 0 4px 24px rgba(60,60,120,0.18); }
+    .edit-modal-content h3 { color: #1a237e; margin-bottom: 18px; }
+    .edit-modal-content input, .edit-modal-content textarea { width: 100%; margin-bottom: 12px; padding: 8px 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; }
+    .edit-modal-content button { background: #3949ab; color: #fff; border: none; border-radius: 5px; padding: 8px 22px; font-weight: 600; cursor: pointer; margin-right: 8px; }
+    .edit-modal-content button:hover { background: #5c6bc0; }
+  </style>
+</head>
+<body>
+  <div class="manage-courses-container">
+    <div class="manage-courses-header">Manage Courses</div>
+    <form class="add-course-form" id="addCourseForm">
+      <input type="text" id="courseTitle" placeholder="Course Title" required>
+      <textarea id="courseDesc" placeholder="Course Description" rows="2" required></textarea>
+      <button type="submit">Add Course</button>
+    </form>
+    <div class="course-list" id="courseList">
+      <!-- Course items will be rendered here -->
+    </div>
+  </div>
+  <div class="edit-modal" id="editModal">
+    <div class="edit-modal-content">
+      <h3>Edit Course</h3>
+      <input type="text" id="editCourseTitle" required>
+      <textarea id="editCourseDesc" rows="2" required></textarea>
+      <div style="text-align:right;">
+        <button id="saveEditBtn">Save</button>
+        <button id="cancelEditBtn" style="background:#f44336;">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Simulated course data (replace with backend integration as needed)
+    let courses = [
+      { title: 'Introduction to Computer Science', desc: 'Basics of computing, programming, and algorithms.' },
+      { title: 'Advanced Mathematics', desc: 'Calculus, linear algebra, and statistics for science majors.' }
+    ];
+    const courseList = document.getElementById('courseList');
+    const addCourseForm = document.getElementById('addCourseForm');
+    const courseTitle = document.getElementById('courseTitle');
+    const courseDesc = document.getElementById('courseDesc');
+    const editModal = document.getElementById('editModal');
+    const editCourseTitle = document.getElementById('editCourseTitle');
+    const editCourseDesc = document.getElementById('editCourseDesc');
+    const saveEditBtn = document.getElementById('saveEditBtn');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+    let editIndex = null;
+    function renderCourses() {
+      courseList.innerHTML = '';
+      if (courses.length === 0) {
+        courseList.innerHTML = '<div style="color:#888;text-align:center;padding:24px;">No courses added yet.</div>';
+        return;
+      }
+      courses.forEach((c, i) => {
+        const div = document.createElement('div');
+        div.className = 'course-item';
+        div.innerHTML = `<div><div class='course-title'>${c.title}</div><div style='color:#444;font-size:0.98rem;margin-top:4px;'>${c.desc}</div></div><div class='course-actions'><button onclick='editCourse(${i})'>Edit</button><button onclick='uploadContent(${i})'>Upload</button><button onclick='deleteCourse(${i})' style='background:#f44336;color:#fff;'>Delete</button></div>`;
+        courseList.appendChild(div);
+      });
+    }
+    addCourseForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      courses.push({ title: courseTitle.value, desc: courseDesc.value });
+      courseTitle.value = '';
+      courseDesc.value = '';
+      renderCourses();
+    });
+    window.editCourse = function(i) {
+      editIndex = i;
+      editCourseTitle.value = courses[i].title;
+      editCourseDesc.value = courses[i].desc;
+      editModal.style.display = 'flex';
+    };
+    saveEditBtn.addEventListener('click', function() {
+      if (editIndex !== null) {
+        courses[editIndex].title = editCourseTitle.value;
+        courses[editIndex].desc = editCourseDesc.value;
+        renderCourses();
+        editModal.style.display = 'none';
+      }
+    });
+    cancelEditBtn.addEventListener('click', function() {
+      editModal.style.display = 'none';
+    });
+    window.deleteCourse = function(i) {
+      if (confirm('Are you sure you want to delete this course?')) {
+        courses.splice(i, 1);
+        renderCourses();
+      }
+    };
+    window.uploadContent = function(i) {
+      alert('Upload content for: ' + courses[i].title + '\n(This is a placeholder. Integrate with file upload system.)');
+    };
+    renderCourses();
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments & Grading</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 32px; }
+        h1 { color: #2c3e50; margin-bottom: 24px; }
+        .assignment-list { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+        .assignment-list th, .assignment-list td { padding: 12px 16px; border-bottom: 1px solid #e1e4e8; text-align: left; }
+        .assignment-list th { background: #f8f9fa; color: #34495e; }
+        .assignment-list tr:hover { background: #f0f4fa; }
+        .grade-btn { background: #2d7ff9; color: #fff; border: none; border-radius: 6px; padding: 7px 16px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        .grade-btn:focus { outline: 2px solid #2d7ff9; outline-offset: 2px; }
+        .grade-btn:hover { background: #1b5dbf; }
+        .back-link { display: inline-block; margin-bottom: 18px; color: #2d7ff9; text-decoration: none; font-weight: 500; }
+        .back-link:focus, .back-link:hover { text-decoration: underline; }
+        @media (max-width: 700px) { .container { padding: 16px; } .assignment-list th, .assignment-list td { padding: 8px; } }
+    </style>
+</head>
+<body>
+    <div class="container" role="main">
+        <a href="dashboard.html" class="back-link" aria-label="Back to dashboard">&larr; Back to Dashboard</a>
+        <h1>Assignments & Grading</h1>
+        <table class="assignment-list" aria-label="Student Assignment Submissions">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Assignment</th>
+                    <th>Submission</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jane Doe</td>
+                    <td>Essay 1</td>
+                    <td><a href="#" aria-label="Download Jane Doe's Essay 1">Download</a></td>
+                    <td><input type="text" value="" size="3" aria-label="Grade for Jane Doe Essay 1"></td>
+                    <td><button class="grade-btn" aria-label="Submit grade for Jane Doe Essay 1">Submit</button></td>
+                </tr>
+                <tr>
+                    <td>John Smith</td>
+                    <td>Essay 1</td>
+                    <td><a href="#" aria-label="Download John Smith's Essay 1">Download</a></td>
+                    <td><input type="text" value="" size="3" aria-label="Grade for John Smith Essay 1"></td>
+                    <td><button class="grade-btn" aria-label="Submit grade for John Smith Essay 1">Submit</button></td>
+                </tr>
+                <!-- More rows dynamically generated in real app -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

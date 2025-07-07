@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturer Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .dashboard-container { max-width: 1200px; margin: 40px auto; padding: 24px; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+        .dashboard-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+        .dashboard-header h1 { font-size: 2.2rem; color: #2c3e50; }
+        .dashboard-sections { display: flex; flex-wrap: wrap; gap: 32px; }
+        .dashboard-section { flex: 1 1 320px; background: #f8f9fa; border-radius: 10px; padding: 28px 24px; box-shadow: 0 1px 6px rgba(0,0,0,0.04); display: flex; flex-direction: column; align-items: flex-start; min-width: 320px; }
+        .dashboard-section h2 { font-size: 1.3rem; margin-bottom: 18px; color: #34495e; }
+        .dashboard-section p { color: #555; margin-bottom: 18px; }
+        .dashboard-section a, .dashboard-section button { background: #2d7ff9; color: #fff; border: none; border-radius: 6px; padding: 10px 22px; font-size: 1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; margin-bottom: 8px; }
+        .dashboard-section a:focus, .dashboard-section button:focus { outline: 2px solid #2d7ff9; outline-offset: 2px; }
+        .dashboard-section a:hover, .dashboard-section button:hover { background: #1b5dbf; }
+        @media (max-width: 900px) { .dashboard-sections { flex-direction: column; gap: 24px; } }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container" role="main">
+        <div class="dashboard-header">
+            <h1>Lecturer Dashboard</h1>
+            <a href="profile.html" aria-label="Go to profile">Profile</a>
+        </div>
+        <div class="dashboard-sections">
+            <section class="dashboard-section" aria-labelledby="manage-courses-title">
+                <h2 id="manage-courses-title">Manage My Courses</h2>
+                <p>Add, edit, and upload course content for your classes.</p>
+                <a href="manage-courses.html" aria-label="Go to Manage My Courses">Go to Manage Courses</a>
+            </section>
+            <section class="dashboard-section" aria-labelledby="assignments-title">
+                <h2 id="assignments-title">Assignments & Grading</h2>
+                <p>View student submissions, grade assignments, and provide feedback.</p>
+                <a href="assignments.html" aria-label="Go to Assignments and Grading">Go to Assignments</a>
+            </section>
+            <section class="dashboard-section" aria-labelledby="forum-title">
+                <h2 id="forum-title">Course Forum</h2>
+                <p>Discuss with students, answer questions, and facilitate course discussions.</p>
+                <a href="forum.html" aria-label="Go to Course Forum">Go to Forum</a>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

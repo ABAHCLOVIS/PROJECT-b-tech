@@ -9,8 +9,9 @@
 </head>
 <body>
   <div class="topbar">
-    <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
-    <div>
+    <div style="display:flex;align-items:center;gap:18px;">
+      <button id="notification-btn" style="background:none;border:none;position:relative;font-size:22px;cursor:pointer;margin-right:18px;" aria-label="Show notifications">🔔<span id="notif-dot" style="display:inline-block;width:8px;height:8px;background:#f44336;border-radius:50%;position:absolute;top:2px;right:2px;"></span></button>
+      <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
       <button class="profile-btn">Profile</button>
       <button class="logout-btn" onclick="logoutRedirect()">Logout</button>
     </div>
@@ -24,6 +25,19 @@
     <a href="manage-users.html" class="sidebar-link">Manage Users</a>
   </div>
   <div class="main-content">
+    <!-- Notification Panel (left side, dynamic, single instance) -->
+    <div id="notification-panel" style="display:none;position:fixed;top:70px;left:30px;width:360px;max-width:97vw;z-index:3000;background:#fff;box-shadow:0 4px 24px rgba(0,0,0,0.18);border-radius:12px;overflow:hidden;">
+      <div style="background:#3949ab;color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-weight:600;font-size:1.1rem;">Notifications</span>
+        <button id="close-notif-btn" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;">&times;</button>
+      </div>
+      <div id="notif-list" style="max-height:340px;overflow-y:auto;padding:0;"></div>
+      <div style="padding:10px 18px;border-top:1px solid #eee;background:#fafafa;display:flex;gap:8px;">
+        <input id="notif-title" type="text" placeholder="Title" style="flex:1;padding:6px 8px;border-radius:5px;border:1px solid #ccc;font-size:14px;">
+        <input id="notif-msg" type="text" placeholder="Message" style="flex:2;padding:6px 8px;border-radius:5px;border:1px solid #ccc;font-size:14px;">
+        <button id="add-notif-btn" style="background:#3949ab;color:#fff;border:none;padding:6px 14px;border-radius:5px;font-weight:600;">Add</button>
+      </div>
+    </div>
     <!-- Manage Users Modal -->
     <h2>Admin Dashboard</h2>
     <div style="display:flex;gap:24px;flex-wrap:wrap;">
@@ -40,6 +54,8 @@
         <p id="total-materials">45</p>
       </div>
     </div>
+
+
 
     <!-- WhatsApp-like Chat Modal -->
     <div id="chat-modal" style="display:none;position:fixed;right:0;bottom:0;width:350px;max-width:95vw;height:480px;z-index:2000;background:#fff;box-shadow:-2px 0 16px rgba(0,0,0,0.18);border-radius:16px 0 0 0;flex-direction:column;overflow:hidden;">
@@ -74,6 +90,80 @@
     </div>
   </div>
   <script src="../js/sidebar.js"></script>
+  <script>
+    // Notification panel functionality (left side, dynamic, single instance)
+    const notifBtn = document.getElementById('notification-btn');
+    const notifPanel = document.getElementById('notification-panel');
+    const closeNotifBtn = document.getElementById('close-notif-btn');
+    const notifDot = document.getElementById('notif-dot');
+    const notifList = document.getElementById('notif-list');
+    const addNotifBtn = document.getElementById('add-notif-btn');
+    const notifTitle = document.getElementById('notif-title');
+    const notifMsg = document.getElementById('notif-msg');
+    let notifOpen = false;
+    let notifications = [
+      {title: 'System Maintenance', date: 'July 7, 2025', msg: 'The portal will be down for maintenance from 10pm to 12am.'},
+      {title: 'Convocation Reminder', date: 'August 1, 2025', msg: 'All final year students should check their emails for convocation details.'},
+      {title: 'Sports Week', date: 'July 20, 2025', msg: 'Inter-faculty sports competitions start next week. Register with your faculty rep!'},
+      {title: 'New Clubs Launch', date: 'September 5, 2025', msg: 'Join us for the launch of new student clubs and societies in the main auditorium.'}
+    ];
+    function renderNotifications() {
+      notifList.innerHTML = '';
+      if (notifications.length === 0) {
+        notifList.innerHTML = '<div style="padding:18px;text-align:center;color:#888;">No notifications</div>';
+        return;
+      }
+      notifications.forEach((n, i) => {
+        const div = document.createElement('div');
+        div.style.padding = '12px 18px';
+        div.style.borderBottom = '1px solid #eee';
+        div.innerHTML = `<b>${n.title}</b><br><span style='font-size:13px;color:#555;'>${n.date}</span><br><span style='font-size:14px;'>${n.msg}</span> <button onclick='removeNotif(${i})' style='float:right;background:none;border:none;color:#f44336;font-size:15px;cursor:pointer;' title='Remove'>&#10006;</button>`;
+        notifList.appendChild(div);
+      });
+    }
+    window.removeNotif = function(idx) {
+      notifications.splice(idx, 1);
+      renderNotifications();
+      if(notifications.length === 0 && notifDot) notifDot.style.display = 'none';
+    }
+    if(notifBtn && notifPanel) {
+      notifBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        notifPanel.style.display = notifOpen ? 'none' : 'block';
+        notifOpen = !notifOpen;
+        if(notifOpen && notifDot) notifDot.style.display = 'none';
+        renderNotifications();
+      });
+    }
+    if(closeNotifBtn && notifPanel) {
+      closeNotifBtn.addEventListener('click', function() {
+        notifPanel.style.display = 'none';
+        notifOpen = false;
+      });
+    }
+    // Add notification
+    if(addNotifBtn && notifTitle && notifMsg) {
+      addNotifBtn.addEventListener('click', function() {
+        const title = notifTitle.value.trim();
+        const msg = notifMsg.value.trim();
+        if(title && msg) {
+          const date = new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+          notifications.unshift({title, date, msg});
+          notifTitle.value = '';
+          notifMsg.value = '';
+          renderNotifications();
+          if(notifDot) notifDot.style.display = 'inline-block';
+        }
+      });
+    }
+    // Hide notification panel if clicked outside
+    document.addEventListener('mousedown', function(e) {
+      if(notifPanel && notifOpen && !notifPanel.contains(e.target) && e.target !== notifBtn) {
+        notifPanel.style.display = 'none';
+        notifOpen = false;
+      }
+    });
+  </script>
   <script>
     // Manage Users Modal functionality
     const manageUsersModal = document.getElementById('manage-users-modal');

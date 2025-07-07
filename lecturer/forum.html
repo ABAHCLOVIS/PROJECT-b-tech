@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Forum</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        .forum-container { max-width: 900px; margin: 40px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); padding: 32px; }
+        h1 { color: #2c3e50; margin-bottom: 24px; }
+        .forum-thread { margin-bottom: 32px; }
+        .forum-thread h2 { font-size: 1.1rem; color: #34495e; margin-bottom: 8px; }
+        .forum-posts { margin-left: 18px; margin-bottom: 18px; }
+        .forum-post { background: #f8f9fa; border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; }
+        .forum-post .author { font-weight: 500; color: #2d7ff9; margin-right: 8px; }
+        .forum-post .date { color: #888; font-size: 0.95em; }
+        .forum-reply-form { display: flex; gap: 8px; margin-top: 10px; }
+        .forum-reply-form input, .forum-reply-form textarea { flex: 1; padding: 8px; border-radius: 6px; border: 1px solid #d1d5db; }
+        .forum-reply-form button { background: #2d7ff9; color: #fff; border: none; border-radius: 6px; padding: 8px 18px; font-size: 1rem; cursor: pointer; transition: background 0.2s; }
+        .forum-reply-form button:focus { outline: 2px solid #2d7ff9; outline-offset: 2px; }
+        .forum-reply-form button:hover { background: #1b5dbf; }
+        .back-link { display: inline-block; margin-bottom: 18px; color: #2d7ff9; text-decoration: none; font-weight: 500; }
+        .back-link:focus, .back-link:hover { text-decoration: underline; }
+        @media (max-width: 700px) { .forum-container { padding: 16px; } }
+    </style>
+</head>
+<body>
+    <div class="forum-container" role="main">
+        <a href="dashboard.html" class="back-link" aria-label="Back to dashboard">&larr; Back to Dashboard</a>
+        <h1>Course Forum</h1>
+        <div class="forum-thread" aria-labelledby="thread-1-title">
+            <h2 id="thread-1-title">How do I submit Assignment 1?</h2>
+            <div class="forum-posts">
+                <div class="forum-post"><span class="author">StudentA</span><span class="date">2024-06-01</span><br>How do I submit Assignment 1?</div>
+                <div class="forum-post"><span class="author">Lecturer</span><span class="date">2024-06-01</span><br>Please upload it via the Assignments section.</div>
+            </div>
+            <form class="forum-reply-form" aria-label="Reply to thread: How do I submit Assignment 1?">
+                <input type="text" placeholder="Your name" aria-label="Your name">
+                <textarea rows="2" placeholder="Write a reply..." aria-label="Write a reply"></textarea>
+                <button type="submit">Reply</button>
+            </form>
+        </div>
+        <div class="forum-thread" aria-labelledby="thread-2-title">
+            <h2 id="thread-2-title">Will there be a review session?</h2>
+            <div class="forum-posts">
+                <div class="forum-post"><span class="author">StudentB</span><span class="date">2024-06-02</span><br>Will there be a review session before the exam?</div>
+            </div>
+            <form class="forum-reply-form" aria-label="Reply to thread: Will there be a review session?">
+                <input type="text" placeholder="Your name" aria-label="Your name">
+                <textarea rows="2" placeholder="Write a reply..." aria-label="Write a reply"></textarea>
+                <button type="submit">Reply</button>
+            </form>
+        </div>
+        <!-- More threads dynamically generated in real app -->
+    </div>
+</body>
+</html>

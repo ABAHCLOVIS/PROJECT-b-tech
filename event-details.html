@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details - HUIB</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { background: #f5f5f5; font-family: 'Poppins', sans-serif; margin: 0; }
+    .event-details-container {
+      max-width: 800px;
+      margin: 60px auto 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(30,40,120,0.08);
+      padding: 40px 32px 32px 32px;
+      min-height: 400px;
+    }
+    .event-title { color: #1a237e; font-size: 2.2rem; margin-bottom: 12px; }
+    .event-date { color: #fbc02d; font-size: 1.1rem; margin-bottom: 18px; font-weight: 600; }
+    .event-img { width: 100%; max-width: 420px; border-radius: 10px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .event-desc { color: #444; font-size: 1.1rem; margin-bottom: 18px; }
+    .back-btn { display: inline-block; margin-top: 18px; padding: 10px 24px; background: #fbc02d; color: #1a237e; border: none; border-radius: 6px; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    .back-btn:hover { background: #ffd54f; }
+    @media (max-width: 600px) {
+      .event-details-container { padding: 18px 6px; }
+      .event-title { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="event-details-container" id="eventDetails">
+    <!-- Event details will be injected here -->
+  </div>
+  <script>
+    // Event data (could be fetched from backend in real app)
+    const events = {
+      seminar: {
+        title: 'Educational Seminar',
+        date: 'July 10, 2025',
+        img: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
+        desc: 'Join top educators and students for a day of learning and networking. Explore the latest innovations in e-learning, attend expert talks, and participate in interactive workshops. Open to all students, lecturers, and staff.'
+      },
+      convocation: {
+        title: 'University Convocation',
+        date: 'August 2, 2025',
+        img: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80',
+        desc: 'Celebrate the achievements of our graduating students at the annual convocation ceremony. Family and friends are welcome to join this memorable occasion. The event will feature speeches, awards, and a reception.'
+      },
+      sports: {
+        title: 'Sporting Activities',
+        date: 'July 20-25, 2025',
+        img: 'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=600&q=80',
+        desc: 'Participate in inter-faculty football, basketball, and athletics competitions. All students are encouraged to join or cheer for their teams. Prizes and trophies for winners!'
+      },
+      club: {
+        title: 'Club Launching',
+        date: 'September 5, 2025',
+        img: 'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80',
+        desc: 'Discover and join new student clubs and societies. Meet club leaders, learn about activities, and find your passion. Open to all students and staff.'
+      }
+    };
+    // Get event from query string
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+    const eventKey = getQueryParam('event');
+    const event = events[eventKey];
+    const container = document.getElementById('eventDetails');
+    if(event) {
+      container.innerHTML = `
+        <img src="${event.img}" alt="${event.title}" class="event-img">
+        <div class="event-title">${event.title}</div>
+        <div class="event-date">${event.date}</div>
+        <div class="event-desc">${event.desc}</div>
+        <a href="role-selection.html#events" class="back-btn">&larr; Back to Events</a>
+      `;
+    } else {
+      container.innerHTML = `<div style="color:#b71c1c;font-size:1.2rem;">Event not found. <a href='role-selection.html#events' style='color:#1a237e;text-decoration:underline;'>Back to Events</a></div>`;
+    }
+  </script>
+</body>
+</html>

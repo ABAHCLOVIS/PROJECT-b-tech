@@ -18,21 +18,108 @@
 </head>
 <body>
   <div class="login-container">
-    <form action="login.php" method="post">
-      <h2>Login</h2>
-      <div class="error-msg" id="errorMsg"></div>
-      <div class="input-group">
-        <input type="email" name="email" id="email" required placeholder=" ">
-        <label for="email">Email</label>
-        <span class="icon">&#9993;</span>
+    <form id="loginForm">
+      <div style="margin-bottom:18px;padding:12px;background:#f5f5f5;border-radius:8px;color:#3949ab;font-size:0.98rem;">
+        <b>Demo Accounts:</b><br>
+        <span style="color:#222;">Admin code:</span> <b>1234</b><br>
+        <span style="color:#222;">Lecturer email:</span> <b>lecturer@demo.com</b><br>
+        <span style="color:#222;">Lecturer password:</span> <b>lecturer123</b><br>
+        <span style="color:#222;">Student matricule:</span> <b>S123456</b><br>
+        <span style="color:#222;">Student password:</span> <b>student123</b>
       </div>
-      <div class="input-group">
-        <input type="password" name="password" id="password" required placeholder=" ">
-        <label for="password">Password</label>
-        <span class="icon">&#128274;</span>
+      <h2 id="loginTitle">Login</h2>
+      <div class="error-msg" id="errorMsg"></div>
+      <input type="hidden" name="role" id="roleInput" value="student">
+      <div id="studentFields">
+        <div class="input-group">
+          <input type="text" name="matricule" id="matricule" required placeholder=" ">
+          <label for="matricule">Matricule</label>
+          <span class="icon">&#128100;</span>
+        </div>
+        <div class="input-group">
+          <input type="password" name="password" id="studentPassword" required placeholder=" ">
+          <label for="studentPassword">Password</label>
+          <span class="icon">&#128274;</span>
+        </div>
+      </div>
+      <div id="lecturerFields" style="display:none;">
+        <div class="input-group">
+          <input type="email" name="email" id="lecturerEmail" required placeholder=" ">
+          <label for="lecturerEmail">Lecturer Email</label>
+          <span class="icon">&#9993;</span>
+        </div>
+        <div class="input-group">
+          <input type="password" name="password" id="lecturerPassword" required placeholder=" ">
+          <label for="lecturerPassword">Password</label>
+          <span class="icon">&#128274;</span>
+        </div>
+      </div>
+      <div id="adminFields" style="display:none;">
+        <div class="input-group">
+          <input type="text" name="admin_code" id="adminCode" required placeholder=" ">
+          <label for="adminCode">Admin Code</label>
+          <span class="icon">&#128273;</span>
+        </div>
       </div>
       <button type="submit" class="btn-primary" style="width:100%;">Login</button>
     </form>
   </div>
+  <script>
+    // Show correct login form based on role
+    function showLoginForm(role) {
+      document.getElementById('roleInput').value = role;
+      // Show/hide fields
+      document.getElementById('studentFields').style.display = (role === 'student') ? '' : 'none';
+      document.getElementById('lecturerFields').style.display = (role === 'lecturer') ? '' : 'none';
+      document.getElementById('adminFields').style.display = (role === 'admin') ? '' : 'none';
+      document.getElementById('loginTitle').textContent =
+        role === 'student' ? 'Student Login' : (role === 'lecturer' ? 'Lecturer Login' : 'Admin Login');
+
+      // Set required attributes only for visible fields
+      document.getElementById('matricule').required = (role === 'student');
+      document.getElementById('studentPassword').required = (role === 'student');
+      document.getElementById('lecturerEmail').required = (role === 'lecturer');
+      document.getElementById('lecturerPassword').required = (role === 'lecturer');
+      document.getElementById('adminCode').required = (role === 'admin');
+    }
+    // Check for role in URL
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const role = params.get('role') || 'student';
+      showLoginForm(role);
+    });
+
+    // Frontend login check for demo accounts
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var role = document.getElementById('roleInput').value;
+      var errorMsg = document.getElementById('errorMsg');
+      errorMsg.textContent = '';
+      if (role === 'student') {
+        var matricule = document.getElementById('matricule').value.trim();
+        var password = document.getElementById('studentPassword').value;
+        if (matricule === 'S123456' && password === 'student123') {
+          window.location.href = 'student/dashboard.html';
+        } else {
+          errorMsg.textContent = 'Invalid student credentials.';
+        }
+      } else if (role === 'lecturer') {
+        var email = document.getElementById('lecturerEmail').value.trim();
+        var password = document.getElementById('lecturerPassword').value;
+        if (email === 'lecturer@demo.com' && password === 'lecturer123') {
+          window.location.href = 'lecturer-dashboard.html';
+        } else {
+          errorMsg.textContent = 'Invalid lecturer credentials.';
+        }
+      } else if (role === 'admin') {
+        var code = document.getElementById('adminCode').value.trim();
+        if (code === '1234') {
+          window.location.href = 'admin/dashboard.html';
+        } else {
+          errorMsg.textContent = 'Invalid admin code.';
+        }
+      }
+    });
+  </script>
 </body>
 </html>

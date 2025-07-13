@@ -105,6 +105,31 @@
         </tbody>
       </table>
     </div>
+    <div class="card">
+      <h3>Create Student or Lecturer</h3>
+      <form id="createUserForm" action="../register.php" method="post" style="display:flex;flex-direction:column;gap:16px;max-width:400px;">
+        <select name="role" id="userRole" required style="padding:8px 12px;border-radius:6px;border:1px solid #ccc;font-size:1rem;">
+          <option value="student">Student</option>
+          <option value="lecturer">Lecturer</option>
+        </select>
+        <input type="text" name="fullname" placeholder="Full Name" required style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <input type="email" name="email" placeholder="Email" required style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <input type="text" name="phone" placeholder="Phone" required style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <input type="text" name="department" placeholder="Department" required style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <input type="text" name="matricule" id="matriculeInput" placeholder="Matricule (Student only)" style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <input type="password" name="password" placeholder="Password" required style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required style="padding:10px;border-radius:6px;border:1px solid #ccc;">
+        <button type="submit" class="btn-primary" style="width:100%;">Create User</button>
+      </form>
+      <div id="createUserMsg" style="margin-top:12px;color:#3949ab;font-weight:600;"></div>
+      <script>
+        // Show/hide matricule field based on role
+        document.getElementById('userRole').addEventListener('change', function() {
+          document.getElementById('matriculeInput').style.display = (this.value === 'student') ? '' : 'none';
+        });
+        document.getElementById('userRole').dispatchEvent(new Event('change'));
+      </script>
+    </div>
   </div>
   <script src="../js/sidebar.js"></script>
   <script>

@@ -2,28 +2,41 @@
 require_once 'includes/db.php';
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $conn->real_escape_string($_POST['email']);
-    $password = $_POST['password'];
-    $stmt = $conn->prepare("SELECT id, password, role FROM users WHERE email=?");
-    $stmt->bind_param('s', $email);
-    $stmt->execute();
-    $stmt->store_result();
-    if ($stmt->num_rows === 1) {
-        $stmt->bind_result($id, $hash, $role);
-        $stmt->fetch();
-        if (password_verify($password, $hash)) {
-            $_SESSION['user_id'] = $id;
-            $_SESSION['role'] = $role;
-            if ($role === 'admin') {
-                header('Location: admin/dashboard.html');
-            } else {
-                header('Location: student/dashboard.html');
-            }
-            exit();
-        } else {
-            echo 'Invalid credentials.';
+    $role = $_POST['role'] ?? '';
+    // Demo accounts
+    $demo = [
+      'admin' => ['code' => '1234'],
+      'lecturer' => ['email' => 'lecturer@demo.com', 'password' => 'lecturer123'],
+      'student' => ['matricule' => 'S123456', 'password' => 'student123']
+    ];
+    if ($role === 'student') {
+        $matricule = $_POST['matricule'];
+        $password = $_POST['password'];
+        if ($matricule === $demo['student']['matricule'] && $password === $demo['student']['password']) {
+            $_SESSION['user_id'] = 1;
+            $_SESSION['role'] = 'student';
+            header('Location: student/dashboard.html');
+            exit;
         }
-    } else {
-        echo 'Invalid credentials.';
+        echo '<script>window.onload=function(){document.getElementById("errorMsg").textContent="Invalid matricule or password.";}</script>';
+    } elseif ($role === 'lecturer') {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        if ($email === $demo['lecturer']['email'] && $password === $demo['lecturer']['password']) {
+            $_SESSION['user_id'] = 2;
+            $_SESSION['role'] = 'lecturer';
+            header('Location: lecturer-dashboard.html');
+            exit;
+        }
+        echo '<script>window.onload=function(){document.getElementById("errorMsg").textContent="Invalid email or password.";}</script>';
+    } elseif ($role === 'admin') {
+        $admin_code = $_POST['admin_code'];
+        if ($admin_code === $demo['admin']['code']) {
+            $_SESSION['role'] = 'admin';
+            header('Location: admin/dashboard.html');
+            exit;
+        } else {
+            echo '<script>window.onload=function(){document.getElementById("errorMsg").textContent="Invalid admin code.";}</script>';
+        }
     }
 }

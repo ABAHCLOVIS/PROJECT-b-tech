@@ -3,7 +3,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: #f4f6fc;
+  background: linear-gradient(135deg, #e3f0ff 0%, #fbc02d 100%);
 }
 .topbar {
   position: fixed;
@@ -35,7 +35,7 @@ body {
   left: 0;
   width: 220px;
   height: calc(100% - 60px);
-  background: #1a237e;
+  background: linear-gradient(180deg, #3949ab 0%, #1a237e 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -54,8 +54,9 @@ body {
   transition: background 0.2s;
 }
 .sidebar .sidebar-link.active, .sidebar .sidebar-link:hover {
-  background: #fbc02d;
+  background: linear-gradient(90deg, #fbc02d 60%, #ffd54f 100%);
   color: #1a237e;
+  font-weight: 700;
 }
 .main-content {
   margin-left: 220px;
@@ -86,11 +87,52 @@ body {
   cursor: pointer;
 }
 .card {
+  background: linear-gradient(120deg, #fff 60%, #e3f0ff 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(60,60,120,0.13);
+  padding: 28px 24px;
+  margin-bottom: 28px;
+  transition: box-shadow 0.22s, transform 0.22s;
+  border: 1.5px solid #fbc02d22;
+  position: relative;
+}
+.card:hover {
+  box-shadow: 0 8px 32px rgba(60,60,120,0.18);
+  transform: translateY(-6px) scale(1.03);
+}
+.card img {
+  border: 3px solid #fbc02d;
   background: #fff;
+  box-shadow: 0 2px 12px rgba(60,60,120,0.10);
+}
+.card h3 {
+  color: #3949ab;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.card p {
+  color: #222;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.card button {
+  background: linear-gradient(90deg, #3949ab 60%, #2d7ff9 100%);
+  color: #fff;
+  border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 24px;
-  margin-bottom: 24px;
+  padding: 10px 22px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  box-shadow: 0 2px 8px rgba(60,60,120,0.08);
+  transition: background 0.2s;
+}
+.card button:hover {
+  background: linear-gradient(90deg, #2d7ff9 60%, #3949ab 100%);
+}
 }
 @media (max-width: 900px) {
   .sidebar {

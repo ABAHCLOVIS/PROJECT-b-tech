@@ -114,6 +114,12 @@
           <li><a href="#faqs">FAQs</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
+        <div style="margin-left:24px;">
+          <select id="lang-switcher" aria-label="Language Switcher" style="padding:6px 12px;border-radius:6px;border:1px solid #ccc;font-size:1rem;">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
       </nav>
     </header>
     <main>
@@ -124,31 +130,6 @@
         <button class="role-btn" onclick="location.href='admin/dashboard.html'">Admin</button>
         <button class="role-btn" onclick="location.href='student/dashboard.html'">Student</button>
         <button class="role-btn" onclick="location.href='login.html'">Lecturer</button>
-      </div>
-    </section>
-
-    <!-- Lecturer Dashboard Section (Home Page Preview) -->
-    <section id="lecturer-dashboard" style="background:#fff;padding:56px 0 32px 0;text-align:center;">
-      <h2 style="color:#1a237e;font-size:2rem;margin-bottom:18px;">Lecturer Dashboard (Preview)</h2>
-      <div style="max-width:1200px;margin:0 auto;padding:24px;background:#f8f9fa;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.07);">
-        <div style="display:flex;flex-wrap:wrap;gap:32px;justify-content:center;">
-          <section style="flex:1 1 320px;background:#fff;border-radius:10px;padding:28px 24px;box-shadow:0 1px 6px rgba(0,0,0,0.04);min-width:320px;max-width:350px;display:flex;flex-direction:column;align-items:flex-start;margin-bottom:18px;">
-            <h3 style="font-size:1.3rem;margin-bottom:14px;color:#34495e;">Manage My Courses</h3>
-            <p style="color:#555;margin-bottom:18px;text-align:left;">Add, edit, and upload course content for your classes.</p>
-            <a href="lecturer/manage-courses.html" style="background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;margin-bottom:8px;" aria-label="Go to Manage My Courses">Go to Manage Courses</a>
-          </section>
-          <section style="flex:1 1 320px;background:#fff;border-radius:10px;padding:28px 24px;box-shadow:0 1px 6px rgba(0,0,0,0.04);min-width:320px;max-width:350px;display:flex;flex-direction:column;align-items:flex-start;margin-bottom:18px;">
-            <h3 style="font-size:1.3rem;margin-bottom:14px;color:#34495e;">Assignments & Grading</h3>
-            <p style="color:#555;margin-bottom:18px;text-align:left;">View student submissions, grade assignments, and provide feedback.</p>
-            <a href="lecturer/assignments.html" style="background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;margin-bottom:8px;" aria-label="Go to Assignments and Grading">Go to Assignments</a>
-          </section>
-          <section style="flex:1 1 320px;background:#fff;border-radius:10px;padding:28px 24px;box-shadow:0 1px 6px rgba(0,0,0,0.04);min-width:320px;max-width:350px;display:flex;flex-direction:column;align-items:flex-start;margin-bottom:18px;">
-            <h3 style="font-size:1.3rem;margin-bottom:14px;color:#34495e;">Course Forum</h3>
-            <p style="color:#555;margin-bottom:18px;text-align:left;">Discuss with students, answer questions, and facilitate course discussions.</p>
-            <a href="lecturer/forum.html" style="background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:10px 22px;font-size:1rem;cursor:pointer;text-decoration:none;transition:background 0.2s;margin-bottom:8px;" aria-label="Go to Course Forum">Go to Forum</a>
-          </section>
-        </div>
-        <div style="margin-top:18px;color:#888;font-size:0.98rem;">* Full dashboard available after lecturer login</div>
       </div>
     </section>
     <section id="about" style="background:#fff;padding:56px 0;text-align:center;">
@@ -326,6 +307,94 @@
         <button type="submit" class="role-btn" style="width:100%;margin:0;">Send Message</button>
   </form>
   <script>
+    // Language Switcher Functionality
+    const translations = {
+      en: {
+        home: "Home",
+        about: "About",
+        gallery: "Gallery",
+        events: "Events",
+        faqs: "FAQs",
+        contact: "Contact",
+        welcome: "Welcome to HUIB Portal",
+        empower: "Empowering students, lecturers, and administrators with modern e-learning tools and a collaborative academic environment.",
+        admin: "Admin",
+        student: "Student",
+        lecturer: "Lecturer",
+        whatWeDo: "What We Do",
+        whatWeDoDesc: "At HUIB, we are committed to empowering our academic community with a wide range of educational services and resources. Our offerings are designed to support students, lecturers, and administrators in achieving excellence and innovation in learning and teaching.",
+        comprehensiveCourses: "Comprehensive Courses",
+        comprehensiveCoursesDesc: "We offer 50+ courses across diverse disciplines, ensuring every student finds their path to success.",
+        modernELearning: "Modern E-Learning",
+        modernELearningDesc: "Our digital platform provides access to learning materials, assignments, and interactive resources anytime, anywhere.",
+        expertFaculty: "Expert Faculty",
+        expertFacultyDesc: "Our experienced lecturers and staff are dedicated to guiding students and fostering a collaborative academic environment.",
+        studentSupport: "Student Support",
+        studentSupportDesc: "We provide academic advising, technical support, and a vibrant community to help every learner thrive.",
+        // Add more translations as needed
+      },
+      fr: {
+        home: "Accueil",
+        about: "À propos",
+        gallery: "Galerie",
+        events: "Événements",
+        faqs: "FAQs",
+        contact: "Contact",
+        welcome: "Bienvenue sur le portail HUIB",
+        empower: "Donner aux étudiants, enseignants et administrateurs des outils d'apprentissage modernes et un environnement académique collaboratif.",
+        admin: "Administrateur",
+        student: "Étudiant",
+        lecturer: "Enseignant",
+        whatWeDo: "Ce que nous faisons",
+        whatWeDoDesc: "À HUIB, nous nous engageons à offrir à notre communauté académique une large gamme de services et de ressources éducatives. Nos offres sont conçues pour soutenir les étudiants, les enseignants et les administrateurs dans la recherche de l'excellence et de l'innovation en matière d'apprentissage et d'enseignement.",
+        comprehensiveCourses: "Cours complets",
+        comprehensiveCoursesDesc: "Nous proposons plus de 50 cours dans diverses disciplines, garantissant à chaque étudiant de trouver sa voie vers le succès.",
+        modernELearning: "E-Learning Moderne",
+        modernELearningDesc: "Notre plateforme numérique offre un accès aux supports d'apprentissage, aux devoirs et aux ressources interactives à tout moment, où que vous soyez.",
+        expertFaculty: "Corps enseignant expert",
+        expertFacultyDesc: "Nos enseignants et notre personnel expérimentés sont dédiés à guider les étudiants et à favoriser un environnement académique collaboratif.",
+        studentSupport: "Soutien aux étudiants",
+        studentSupportDesc: "Nous offrons des conseils académiques, un support technique et une communauté dynamique pour aider chaque apprenant à s'épanouir.",
+        // Add more translations as needed
+      }
+    };
+    function switchLanguage(lang) {
+      // Navigation
+      const navLinks = document.querySelectorAll('nav ul li a');
+      const navKeys = ['home','about','gallery','events','faqs','contact'];
+      navLinks.forEach((link, i) => {
+        link.textContent = translations[lang][navKeys[i]];
+      });
+      // Hero section
+      document.querySelector('#hero h1').textContent = translations[lang].welcome;
+      document.querySelector('#hero p').textContent = translations[lang].empower;
+      // Role buttons
+      const roleBtns = document.querySelectorAll('.role-btn');
+      roleBtns[0].textContent = translations[lang].admin;
+      roleBtns[1].textContent = translations[lang].student;
+      roleBtns[2].textContent = translations[lang].lecturer;
+      // What We Do section
+      document.querySelector('#what-we-do h2').textContent = translations[lang].whatWeDo;
+      document.querySelector('#what-we-do p').textContent = translations[lang].whatWeDoDesc;
+      const whatCards = document.querySelectorAll('#what-we-do .what-we-do-card');
+      whatCards[0].querySelector('h3').textContent = translations[lang].comprehensiveCourses;
+      whatCards[0].querySelector('p').textContent = translations[lang].comprehensiveCoursesDesc;
+      whatCards[1].querySelector('h3').textContent = translations[lang].modernELearning;
+      whatCards[1].querySelector('p').textContent = translations[lang].modernELearningDesc;
+      whatCards[2].querySelector('h3').textContent = translations[lang].expertFaculty;
+      whatCards[2].querySelector('p').textContent = translations[lang].expertFacultyDesc;
+      whatCards[3].querySelector('h3').textContent = translations[lang].studentSupport;
+      whatCards[3].querySelector('p').textContent = translations[lang].studentSupportDesc;
+      // Add more section translations as needed
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      const langSwitcher = document.getElementById('lang-switcher');
+      if(langSwitcher) {
+        langSwitcher.addEventListener('change', function() {
+          switchLanguage(this.value);
+        });
+      }
+    });
     // FAQ accordion functionality
     document.addEventListener('DOMContentLoaded', function() {
       // FAQ toggle

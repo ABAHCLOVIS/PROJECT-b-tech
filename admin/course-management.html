@@ -43,7 +43,7 @@
     </div>
     <div class="card" style="margin-top:24px;">
       <h3>All Courses</h3>
-      <p style="color:#555;font-size:15px;margin-bottom:10px;">Below is a list of all courses currently available. You can edit, delete, or view materials for each course.</p>
+      <p style="color:#555;font-size:15px;margin-bottom:10px;">Below is a list of all courses currently available. You can edit, delete, assign instructors, or view materials for each course.</p>
       <table style="width:100%;border-collapse:collapse;">
         <thead>
           <tr style="background:#fbc02d;color:#1a237e;">
@@ -52,6 +52,7 @@
             <th>Description</th>
             <th>Lecturer</th>
             <th>Actions</th>
+            <th>Assign Instructor</th>
           </tr>
         </thead>
         <tbody>
@@ -64,6 +65,22 @@
               <button class="btn-accent" onclick="openEditModal()">Edit</button>
               <button class="btn-primary" onclick="confirm('Delete this course?')">Delete</button>
               <a href="file-upload.html" class="btn-primary">View Materials</a>
+            </td>
+            <td>
+              <form style="display:flex;gap:6px;align-items:center;" onsubmit="event.preventDefault();alert('Instructor assigned!');">
+                <select style="padding:4px 8px;border-radius:5px;border:1px solid #ccc;">
+                  <option value="">Select Instructor</option>
+                  <option value="Dr. Smith">Dr. Smith</option>
+                  <option value="Prof. Lee">Prof. Lee</option>
+                  <option value="Dr. Alice Johnson">Dr. Alice Johnson</option>
+                  <option value="Prof. Linda Smith">Prof. Linda Smith</option>
+                  <option value="Dr. Michael Brown">Dr. Michael Brown</option>
+                  <option value="Prof. Sarah Lee">Prof. Sarah Lee</option>
+                  <option value="Dr. James Carter">Dr. James Carter</option>
+                  <option value="Prof. Emily White">Prof. Emily White</option>
+                </select>
+                <button type="submit" class="btn-primary" style="padding:4px 12px;">Assign</button>
+              </form>
             </td>
           </tr>
           <tr>

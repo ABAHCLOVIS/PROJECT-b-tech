@@ -23,6 +23,7 @@
     <a href="profile.html" class="sidebar-link">Profile</a>
     <a href="#" class="sidebar-link" id="open-chat-btn">Chat</a>
     <a href="manage-users.html" class="sidebar-link">Manage Users</a>
+    <a href="../lecturer-dashboard.html" class="sidebar-link">Lecturer Dashboard</a>
   </div>
   <div class="main-content">
     <!-- Notification Panel (left side, dynamic, single instance) -->
@@ -41,17 +42,33 @@
     <!-- Manage Users Modal -->
     <h2>Admin Dashboard</h2>
     <div style="display:flex;gap:24px;flex-wrap:wrap;">
-      <div class="card" style="flex:1;min-width:200px;">
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=320&q=80" alt="Admin" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
         <h3>Total Students</h3>
-        <p id="total-students">120</p>
+        <p id="total-students" style="font-size:1.5rem;font-weight:600;">120</p>
+        <button onclick="location.href='manage-users.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">Manage Users</button>
       </div>
-      <div class="card" style="flex:1;min-width:200px;">
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=320&q=80" alt="Courses" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
         <h3>Total Courses</h3>
-        <p id="total-courses">15</p>
+        <p id="total-courses" style="font-size:1.5rem;font-weight:600;">15</p>
+        <button onclick="location.href='course-management.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">Manage Courses</button>
       </div>
-      <div class="card" style="flex:1;min-width:200px;">
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=320&q=80" alt="Materials" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
         <h3>Uploaded Materials</h3>
-        <p id="total-materials">45</p>
+        <p id="total-materials" style="font-size:1.5rem;font-weight:600;">45</p>
+        <button onclick="location.href='file-upload.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">Upload Materials</button>
+      </div>
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=320&q=80" alt="Profile" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <h3>Admin Profile</h3>
+        <button onclick="location.href='profile.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">View Profile</button>
+      </div>
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=320&q=80" alt="Chat" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <h3>Chat</h3>
+        <button onclick="document.getElementById('chat-modal').style.display='block'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">Open Chat</button>
       </div>
     </div>
 

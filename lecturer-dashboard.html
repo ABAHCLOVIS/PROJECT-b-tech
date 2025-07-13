@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecturer Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:18px;">
+      <button id="hamburger" aria-label="Toggle sidebar" aria-expanded="false" style="background:none;border:none;font-size:24px;cursor:pointer;">&#9776;</button>
+      <button class="profile-btn">Profile</button>
+      <button class="logout-btn" onclick="logoutRedirect()">Logout</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <a href="../admin/dashboard.html" class="sidebar-link">Admin Dashboard</a>
+    <a href="../lecturer/manage-courses.html" class="sidebar-link">Manage Courses</a>
+    <a href="../lecturer/assignments.html" class="sidebar-link">Assignments</a>
+    <a href="../lecturer/forum.html" class="sidebar-link">Course Forum</a>
+    <a href="../lecturer/profile.html" class="sidebar-link">Profile</a>
+  </div>
+  <div class="main-content">
+    <h2>Lecturer Dashboard</h2>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=320&q=80" alt="Lecturer" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <h3>My Courses</h3>
+        <button onclick="location.href='../lecturer/manage-courses.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">Manage Courses</button>
+      </div>
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=320&q=80" alt="Assignments" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <h3>Assignments</h3>
+        <button onclick="location.href='../lecturer/assignments.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">Grade Assignments</button>
+      </div>
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=320&q=80" alt="Forum" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <h3>Course Forum</h3>
+        <button onclick="location.href='../lecturer/forum.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">Open Forum</button>
+      </div>
+      <div class="card" style="flex:1;min-width:220px;max-width:320px;display:flex;flex-direction:column;align-items:center;">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=320&q=80" alt="Profile" style="width:100px;height:100px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,0.08);">
+        <h3>Lecturer Profile</h3>
+        <button onclick="location.href='../lecturer/profile.html'" style="margin-top:10px;background:#2d7ff9;color:#fff;border:none;border-radius:6px;padding:8px 18px;font-size:1rem;cursor:pointer;">View Profile</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Course Enrollment Stats</h3>
+      <canvas id="lecturerEnrollmentChart" width="400" height="120"></canvas>
+    </div>
+    <div class="card">
+      <h3>Recent Assignment Submissions</h3>
+      <table style="width:100%;border-collapse:collapse;">
+        <thead>
+          <tr style="background:#fbc02d;color:#1a237e;">
+            <th>Student</th><th>Course</th><th>Assignment</th><th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Jane Doe</td><td>CS101</td><td>Essay 1</td><td>2025-06-30</td></tr>
+          <tr><td>John Smith</td><td>MATH201</td><td>Project</td><td>2025-06-29</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="../js/sidebar.js"></script>
+  <script>
+    function logoutRedirect() {
+      window.location.href = '../role-selection.html';
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Chart.js example for lecturer
+    const ctx = document.getElementById('lecturerEnrollmentChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Enrollments',
+          data: [5, 8, 6, 10, 7, 9],
+          backgroundColor: '#3949ab'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: 2.5,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
